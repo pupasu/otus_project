@@ -1,0 +1,30 @@
+---
+#install rsyslog
+- name: Install rsyslog
+  yum:
+    name: "{{ item }}"
+    state: present    
+  loop:
+    - rsyslog
+    
+- name: start & enable rsyslog
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - rsyslog
+
+#setup config
+- name: all.conf
+  copy:
+    src: files/all.conf
+    dest: /etc/rsyslog.d
+
+- name: restart & enable rsyslog
+  systemd:
+    name: "{{ item }}"
+    state: restarted
+    enabled: yes
+  loop:
+    - rsyslog

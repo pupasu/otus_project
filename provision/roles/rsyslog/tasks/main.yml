@@ -1,0 +1,49 @@
+---
+#install rsyslog
+- name: Install rsyslog
+  yum:
+    name: "{{ item }}"
+    state: present    
+  loop:
+    - rsyslog
+    
+- name: restart & enable rsyslog
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - rsyslog
+
+#setup config
+- name: rsyslog.conf
+  copy:
+    src: files/rsyslog.conf
+    dest: /etc
+
+#setup selinux for rsyslog
+- name: install policycoreutils-python
+  yum:
+    name: "{{ item }}"
+    state: present    
+  loop:
+    - policycoreutils-python
+    
+- name: Set Sebool for rsyslog tcp 514
+  shell: semanage port -m -t syslogd_port_t -p tcp 514   
+
+- name: Set Sebool for rsyslog udp 514
+  shell: semanage port -m -t syslogd_port_t -p tcp 514  
+
+# Firewall Settings
+- name: do permit traffic on port 514/tcp
+  ansible.posix.firewalld:
+    port: 514/tcp
+    permanent: true
+    state: enabled
+
+- name: do permit traffic on port 514/udp
+  ansible.posix.firewalld:
+    port: 514/udp
+    permanent: true
+    state: enabled

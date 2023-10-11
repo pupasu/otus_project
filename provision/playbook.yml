@@ -1,0 +1,56 @@
+---
+- hosts: router
+  become: true
+  roles: 
+    - router
+    - zabbix_agent
+    - rsyslog_client
+
+- hosts: mysqlmaster
+  become: true
+  roles:
+    - linux
+    - mysql
+    - zabbix_agent
+    - nfs_client
+    - rsyslog_client
+
+- hosts: mysqlslave
+  become: true
+  roles:
+    - linux
+    - mysql
+    - zabbix_agent
+    - nfs_client
+    - rsyslog_client
+
+- hosts: nginx
+  become: true
+  roles:
+    - linux
+    - nginx
+    - zabbix_agent
+    - nfs_client
+    - rsyslog_client
+
+- hosts: zabbix
+  become: true
+  roles:
+    - linux
+    - zabbix
+    - rsyslog_client
+
+- hosts: backup
+  become: true
+  roles:
+    - linux
+    - nfs_server
+    - zabbix_agent
+    - rsyslog_client
+ 
+- hosts: log
+  become: true
+  roles:
+    - linux
+    - zabbix_agent
+    - rsyslog

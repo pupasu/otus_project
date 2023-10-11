@@ -1,0 +1,13 @@
+---
+- name: enable rsyslog
+  systemd:
+    name: rsyslog
+    state: enabled
+
+- name: start rsyslog
+  systemd:
+    name: "{{ item }}"
+    enabled: true
+    state: started         
+  loop:
+      - rsyslog
