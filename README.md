@@ -70,7 +70,7 @@ NFS Server - на этом хосте поднят NFS Server и подключ�
 
 Сервис | Адрес
 ------| ---------
-Wordpress (Nginx+PHP-FPM) | https://192.168.10.20 (https://otus.pepa.su)
+Wordpress (Nginx+PHP-FPM) | https://192.168.10.20 (https://otus.pupa.su)
 Zabbix | http://192.168.10.50/zabbix
 
 
