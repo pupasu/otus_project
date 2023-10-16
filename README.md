@@ -29,7 +29,7 @@ vagrant up
 ```
 Эта команда запускает виртуальные машины, а так же их настройку с помощью Ansible
 
-![image](https://github.com/)
+![image](https://github.com/PavelSergeevItem/otus_project/blob/main/pictures/schema.jpg)
  Хосты | IP адрес
 ------| ---------
 Router | 192.168.10.10
