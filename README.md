@@ -47,17 +47,15 @@ Router - входящий роутер, который регулирует до
         
 WEB    - хост на, котором установлен стек: Nginx + PHP-FPM + Wordpress (БД находится на MySQL Master +  
        + Zabbix Agent (для мониторина Zabbix Server) + Rsyslog client (для передачи логов на Log сервер) 
-![image](https://github.com/)
 MySQL Master - хост, на котором установлен MySQL в статусе Мастера в котором создана БД worpress. С него происходит репликация на MySQL Slave
 
 MySQL Slave - на него происходит репликация данных с Мастера + если мастер не доступен можно переключить работу WEB
               Как переключить описано  [здесь](https://github.com/PavelSergeevItem/otus_project/blob/main/repl_mysql/README.md)
               
 Log - из-за не хватки ресурсов поднят обычный Rsyslogдля сбора логов 
-![image](https://github.com/)
 
 Zabbix - мониторинг хостов через агентов установленных на хостах
-![image](https://github.com/)
+![image](https://github.com/PavelSergeevItem/otus_project/blob/main/pictures/zabbix.png)
        
 NFS Server - на этом хосте поднят NFS Server и подключается как шара для бэкапов на хостах баз данных и WEB 
              в ручную (скрипты на WEB для бэкапа контента и его восстановления находятся в /home/vagrant) или по крону (можно 
