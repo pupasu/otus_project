@@ -72,6 +72,6 @@ Wordpress (Nginx+PHP-FPM) | https://192.168.10.20 (https://otus.pupa.su)
 Zabbix | http://192.168.10.50/zabbix
 
 
-SSL сертификат для сайта - сделан припощи ДНС в https://letsencrypt.org/
+SSL сертификат для сайта - сделан при помощи ресурса https://letsencrypt.org/
 ![image](https://github.com/)
 
